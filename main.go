@@ -4,8 +4,8 @@ import(
 	"grep/regx"
 )
 func main() {
-	files := []string{"input.txt"}
-    flags := []string{"-x"}
+	files := []string{"input.txt","greeting.txt"}
+    flags := []string{"-i","-x","-v"}
     for _, line := range Search("hello",flags, files) {
        println(line)
 	}
@@ -14,15 +14,12 @@ func main() {
 func Search(pattern string, flags, files []string) []string {
 	Store := []regx.File{}
 	res := []string{}
-	//var x = make(map[string]int)
+	
 	for i := 0; i < len(files); i++ {
 		Store = append(Store, regx.ReadFile(files[i]))
 	}
 
-	/*for i := 0; i < len(Store); i++ {
-		x[Store[i].name] = i
-	}*/
-
+	
 	if len(flags) == 0 {//No Flag
 		if len(files) == 1 {//One File
 			res=regx.FlagZeroFileOne(Store,pattern)
@@ -35,9 +32,16 @@ func Search(pattern string, flags, files []string) []string {
 		} else { //Many File
 			res=regx.FlagOneFileMany(flags[0],Store,pattern)
 		}
+	}else{
+		if len(files)==1{//FlagManyFileOne
+			res=regx.FlagManyFileOne(flags,Store[0],pattern)
+		}else{
+			 res=regx.FlagManyFileMany(flags,Store,pattern)
+		}
 	}
 	return res
 }
+
 
 
 
