@@ -17,7 +17,7 @@ func FlagZeroFileMany(Store []File, pattern string) []string {
 	res := []string{}
 	for i := 0; i < len(Store); i++ {
 		for j := 0; j < len(Store[i].lines); j++ {
-			if strings.Contains(Store[0].lines[j], pattern) {
+			if strings.Contains(Store[i].lines[j], pattern) {
 				res = append(res, Store[i].name+":"+Store[i].lines[j])
 			}
 		}
@@ -219,4 +219,14 @@ func FlagManyFileMany(flags []string, Store []File, pattern string)[]string{
 	}
 	return res
 }
-
+func StringSlicesEqual(a, b []string) bool {
+    if len(a) != len(b) {
+        return false
+    }
+    for i, v := range a {
+        if v != b[i] {
+            return false
+        }
+    }
+    return true
+}
