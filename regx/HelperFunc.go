@@ -8,7 +8,7 @@ func FlagZeroFileOne(Store []File, pattern string) []string {
 	res := []string{}
 	for j := 0; j < len(Store[0].lines); j++ {
 		if strings.Contains(Store[0].lines[j], pattern) {
-			res = append(res, Store[0].name+":"+Store[0].lines[j])
+			res = append(res,Store[0].lines[j])
 		}
 	}
 	return res
@@ -31,7 +31,7 @@ func FlagOneFileOne(flag string, Store []File, pattern string) []string {
 	case "-n":
 		for j := 0; j < len(Store[0].lines); j++ {
 			if strings.Contains(Store[0].lines[j], pattern) {
-				res = append(res, Store[0].name+":"+fmt.Sprint(j+1)+":"+Store[0].lines[j])
+				res = append(res,fmt.Sprint(j+1)+":"+Store[0].lines[j])
 			}
 		}
 	case "-l":
