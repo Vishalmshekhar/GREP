@@ -5,7 +5,7 @@ import(
 )
 func main() {
 	files := []string{"input.txt","greeting.txt"}
-    flags := []string{}
+    flags := []string{"-v","-i-","-x"}
     for _, line := range Search("hello",flags, files) {
        println(line)
 	}

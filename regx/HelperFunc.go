@@ -46,7 +46,7 @@ func FlagOneFileOne(flag string, Store []File, pattern string) []string {
 			res2 := strings.Split(Store[0].lines[j], " ")
 			for k := 0; k < len(res2); k++ {
 				if strings.EqualFold(res2[k], pattern) {
-					res = append(res, Store[0].name+":"+Store[0].lines[j])
+					res = append(res,Store[0].lines[j])
 					break
 				}
 			}
@@ -54,13 +54,13 @@ func FlagOneFileOne(flag string, Store []File, pattern string) []string {
 	case "-v":
 		for j := 0; j < len(Store[0].lines); j++ {
 			if !strings.Contains(Store[0].lines[j], pattern) {
-				res = append(res, Store[0].name+":"+Store[0].lines[j])
+				res = append(res, Store[0].lines[j])
 			}
 		}
 	case "-x":
 		for j := 0; j < len(Store[0].lines); j++ {
 			if strings.Compare(Store[0].lines[j], pattern) == 0 {
-				res = append(res, Store[0].name+":"+Store[0].lines[j])
+				res = append(res,Store[0].lines[j])
 			}
 		}
 	}
