@@ -4,8 +4,8 @@ import(
 	"grep/regx"
 )
 func main() {
-	files := []string{"input.txt","greeting.txt"}
-    flags := []string{"-v","-i-","-x"}
+	files := []string{"another.txt"}
+    flags := []string{"-n"}
     for _, line := range Search("hello",flags, files) {
        println(line)
 	}
